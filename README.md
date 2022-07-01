@@ -24,7 +24,8 @@ CSS: Bootstrap 5 (https://getbootstrap.com/docs/5.2/getting-started/introduction
 Map: Leaflet JS (https://leafletjs.com/examples/quick-start/)
 
 ### Other highlights:
-Using Promise.all to pass an array to an async-await function (https://flaviocopes.com/javascript-async-await-array-map/) 
+Used Promise.all to pass an array to an async-await function   
+(https://flaviocopes.com/javascript-async-await-array-map/) 
 
 ## Approach taken:
 -Aimed for minimum pass using Minimum Viable Product and "Quick Iteration" mindset   
