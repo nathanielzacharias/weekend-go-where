@@ -1,0 +1,19 @@
+#mapdiv {
+    display: flex;
+    justify-items: center;
+    height: 800px;
+    width: 800px;
+}
+
+body {
+    background-color: aquamarine !important;
+}
+
+
+h1 {
+    margin: 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+

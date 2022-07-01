@@ -1,0 +1,63 @@
+API Key : wuET5A9GzTonj2bb2ZY4c4G3ZJKQbPSt
+
+Weekend go where
+-Map of singapore 
+
+-Overlay with Markers
+--getLatLongFromPostalCode 
+--take as input coordinates (latitude, longitude)
+---GET listEventTypes (EventsTypes - https://tih-dev.stb.gov.sg/content-api/apis)
+List event types:
+https://tih-dev.stb.gov.sg/content-api/apis/get/v1/event/types
+
+send search by keyword:
+returned JSON object, get .address.postalCode send to OneMap get lat, long, overlay the balloons
+
+returned JSON object - render like:
+JSONObject.data.
+    -hidden .uuid - for me
+    -.name by .Wearable Craft 
+    - from .startDate to .endDate 
+    - costing .price
+    - description: .description
+    - at .address.postalCode -open in Google Maps
+
+
+convert postal code to latitude longitude:
+https://www.onemap.gov.sg/docs/#search
+https://developers.onemap.sg/commonapi/search?searchVal=609081&returnGeom=Y
+--just get first result and get latitude longitude
+
+Wireframe for each state of the page 
+flowchart for every event on the page (one direction, A - B then B-A) 
+
+
+
+
+steps:
+done - list of Events types
+done - dropdown with events types
+done - change innerText of button
+done - user select list of events
+done - based on selected event types, search keyword
+done - access lat long, and put into balloon to display on map
+done - postal code convert to lat long OR filter out lat long = 0
+done - plot multiple events on map using markers using lat long 
+done - popup - tooltip - bootstrap -show name and description
+
+
+for 404 return - feedback to user that there are no results found
+loading spinner 
+
+
+
+-Onclick 
+--launch carousel of images
+---GET imageSearchByKeyword (Image - https://tih-dev.stb.gov.sg/media-api/apis) 
+
+modal - in bootstrap 
+stretch - to do list - add event, remove event 
+
+points to highlight: 
+Promise.all 
+

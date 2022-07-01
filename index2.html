@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend go where</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://cdn.onemap.sg/leaflet/onemap-leaflet.js"></script>
+    
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script     src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+                integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+                crossorigin="">
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-5 fw-bold">Weekend go where</h1>
+
+        <div class="row justify-content-md-center">
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4 d-sm-flex justify-content-sm-center">Discover events around Singapore</p>  
+                <div class="dropdown-center d-sm-flex justify-content-sm-center">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Event Types
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    </ul>
+                </div>
+                <form>
+                    <div class="mb-3">
+                      <label for="searchingByKeyword" class="form-label">Search for events</label>
+                      <input type="search" class="form-control" id="keywordSearch">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-secondary" id="searchBtn">Search</button>
+                    </div>
+                </form>  
+            </div>
+        </div>
+        
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="container" id='mapdiv'></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous">
+    </script>
+    <script src="./app.js"></script>
+</body>
+
+
+</html>
