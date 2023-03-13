@@ -1,3 +1,6 @@
+require("dotenv").config();
+const dotenvApikey = process.env.APIKEY
+
 let listEventTypes = [] //list of Event Types
 
 //display map - copied from https://www.onemap.gov.sg/docs/maps/
@@ -34,16 +37,16 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
 }
-function showPosition(position) {
-    marker = new L.Marker([position.coords.latitude, position.coords.longitude], { bounceOnAdd: false }).addTo(map);
-    var popup = L.popup()
-        .setLatLng([position.coords.latitude, position.coords.longitude])
-        .setContent('You are here!')
-        .openOn(map);
-}
+// function showPosition(position) {
+//     marker = new L.Marker([position.coords.latitude, position.coords.longitude], { bounceOnAdd: false }).addTo(map);
+//     var popup = L.popup()
+//         .setLatLng([position.coords.latitude, position.coords.longitude])
+//         .setContent('You are here!')
+//         .openOn(map);
+// }
 //fetch list of event types from TIH STB
 async function getListOfEventTypes() {
-    const response = await fetch("https://tih-api.stb.gov.sg/content/v1/event/types?language=en&apikey=wuET5A9GzTonj2bb2ZY4c4G3ZJKQbPSt", {
+    const response = await fetch(`https://tih-api.stb.gov.sg/content/v1/event/types?language=en&apikey=${dotenvApikey}`, {
         method: 'GET',
         redirect: 'follow'
     })
@@ -85,7 +88,7 @@ async function getEventsBySearch(searchString){
             method: 'GET',
             redirect: 'follow'
           };
-          const response = await fetch(`https://tih-api.stb.gov.sg/content/v1/event/search?keyword=${searchString}&language=en&apikey=wuET5A9GzTonj2bb2ZY4c4G3ZJKQbPSt`, requestOptions)
+          const response = await fetch(`https://tih-api.stb.gov.sg/content/v1/event/search?keyword=${searchString}&language=en&apikey=${dotenvApikey}`, requestOptions)
     
         const responseJSON = await response.json();
         //console.log('displayEventType:',response)
@@ -136,8 +139,19 @@ async function getEventsAndDisplay(searchString) {
     })
     console.log(arrLatLong)
 
+    //clearMarkers
+    clearMarkers()
+
     displayMarkers(arrLatLong,eventsJSON)
 }
+
+function clearMarkers(){
+    const toClearMarkers = document.querySelector(".leaflet-marker-pane").innerHTML = '';
+    const toClearPopup = document.querySelector(".leaflet-popup-pane").innerHTML = '';
+    const toClearShadow = document.querySelector(".leaflet-shadow-pane").innerHTML = '';
+
+}
+
 //display Markers on Map
 function displayMarkers(arrLatLong, eventsJSON){
         //display markers

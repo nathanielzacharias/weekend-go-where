@@ -1,0 +1,22 @@
+{
+  "name": "weekendgowhere",
+  "version": "1.0.0",
+  "description": "Project 1 from GA's SEIF course",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanielzacharias/weekendGoWhere.git"
+  },
+  "author": "N Zacharias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanielzacharias/weekendGoWhere/issues"
+  },
+  "homepage": "https://github.com/nathanielzacharias/weekendGoWhere#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
