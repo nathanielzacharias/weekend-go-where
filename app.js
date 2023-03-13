@@ -1,5 +1,5 @@
-require("dotenv").config();
-const dotenvApikey = process.env.APIKEY
+//require("dotenv").config();
+//const dotenvApikey = process.env.APIKEY
 
 let listEventTypes = [] //list of Event Types
 

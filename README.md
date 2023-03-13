@@ -8,7 +8,7 @@ Weekend Go Where
 Search Singapore Tourism Board's API for events, and then overlay those events on a map
 
 ## Link to live site:
-https://nathanielzacharias.github.io/index2.html
+https://nathanielzacharias.github.io/weekend-go-where/
 
 ## Technologies used:
 ### APIs from Tourism Info Hub (Singapore Tourism Board) :  
