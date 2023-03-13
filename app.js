@@ -1,6 +1,6 @@
 //require("dotenv").config();
 // const dotenvApikey = process.env.APIKEY
-const dotenvApikey = 'wuET5A9GzTonj2bb2ZY4c4G3ZJKQbPSt'
+const dotenvApikey = `wuET5A9GzTonj2bb2ZY4c4G3ZJKQbPSt`
 
 let listEventTypes = [] //list of Event Types
 
