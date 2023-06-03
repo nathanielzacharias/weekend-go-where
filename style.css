@@ -6,13 +6,54 @@
 }
 
 body {
-    background-color: aquamarine !important;
+    padding:0;
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
 }
 
 h1 {
-    margin: 2rem;
-    padding: 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Besley', serif;
+    font-weight: 800;
+    font-size: 2em;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
+
+.map-logo {
+    /* padding-top: 0; */
+    width: 2.5em;
+    height: auto;
+    /* border: solid midnightblue 0.1rem; */
+}
+
+div {
+    margin:0;
+    padding:0;
+}
+
+.h1-container {
+    background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+    border-radius: 0.5rem;
+    padding: 0;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.h1-container > p {
+    align-self: flex-start ;
+    padding-left: 6em;
+    margin-top: 0;
+    padding-top: 0;
+    font-family: 'Besley', serif;
+    font-weight: 500;
+}
+
+.justify-content-center {
+    /* background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%); */
+
+}
+
 
