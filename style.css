@@ -3,11 +3,13 @@
     justify-items: center;
     height: 800px;
     width: 800px;
+    border-radius: 0.5rem;
+    box-shadow: 0 -0.3rem 2.5rem #d9e7ff;
 }
 
 body {
     padding:0;
-    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    background: linear-gradient(90deg, #cae3ce 0%, #d9e7ff 100%);
 }
 
 h1 {
@@ -34,17 +36,19 @@ div {
 }
 
 .h1-container {
-    background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+    background: linear-gradient(90deg, #efd5ff 0%, hsl(236, 77%, 75%) 100%);
     border-radius: 0.5rem;
     padding: 0;
     margin: 1rem;
     display: flex;
     flex-direction: column;
+    box-shadow: 0.5rem 0 5rem #d9a3fb;
+    margin-bottom: 2rem;
 }
 
 .h1-container > p {
     align-self: flex-start ;
-    padding-left: 6em;
+    padding-left: 5.5em;
     margin-top: 0;
     padding-top: 0;
     font-family: 'Besley', serif;
