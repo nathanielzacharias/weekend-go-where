@@ -29,45 +29,59 @@
 
 </head>
 <body>
-    <!-- <div class="container">
-        <navbar class="navbar-expand-md">
-        </navbar>
-    </div> -->
     <div class="container">
         
         <div class="h1-container">
             <h1>
-                <span>
+                <div>
                     <img class= "map-logo" src="assets/singapore-map.svg" alt="stylised map">
-                </span>
-                <span>
-                    Weekend go where
-                </span>                    
-            </h1>   
-            <p>Discover events around Singapore</p>
-        </div>        
-
-        <div class="row justify-content-center">
-            <div class="col-lg-6 mx-auto text-center">
-                <div class="dropdown-center">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Event Types
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    </ul>
                 </div>
-                <form>
-                    <div class="mb-3">
-                      <label for="searchingByKeyword" class="form-label mt-3">Search for events</label>
-                      <input type="search" class="form-control" id="keywordSearch">
+                <div class="title-div">
+                    <span>Weekend go where</span>
+                </div>
+            </h1>   
+            <!-- <p>Discover events around Singapore</p> -->
+        </div>    
+        
+        <nav class="navbar navbar-expand-lg navbar-dark" style=" background: linear-gradient(-165deg, #cae3ce 0%,hsl(236, 77%, 75%)100%)">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <div class="dropdown-center">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        </ul>
                     </div>
-                    <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-secondary" id="searchBtn">Search</button>
-                    </div>
+                  </li>
+
+                    <!-- <li class="nav-item">
+                        <span><<< Browse</span>
+                        <span>||</span>
+                        <span>Search >></span>
+                    </li> -->
+
+                </ul>
+                <form class="d-flex search-form search-widget">
+                    <label for="searchingByKeyword" class="form-label mt-3"></label>
+                    <span>
+                        <input type="search" class="form-control" id="keywordSearch" placeholder='' role="combobox">
+                    </span>
+                    <span>
+                        <button type="submit" class="btn btn-secondary search" id="searchBtn">&#128269;</button>
+                    </span>
+                    <!-- <div class="mb-3 text-center"> -->
+                  </div>
                 </form>  
-            </div>
-        </div>
+
+              </div>
+          </nav>
         
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
