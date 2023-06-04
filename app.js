@@ -144,6 +144,8 @@ async function getEventsAndDisplay(searchString) {
     clearMarkers()
 
     displayMarkers(arrLatLong,eventsJSON)
+
+
 }
 
 function clearMarkers(){
@@ -156,6 +158,7 @@ function clearMarkers(){
 //display Markers on Map
 function displayMarkers(arrLatLong, eventsJSON){
         //display markers
+        const ul = document.querySelector('.listicle-ul');
         const markers = []
         arrLatLong.forEach((element,index) => {
             markers[index] = L.marker(arrLatLong[index]).addTo(map)
@@ -165,7 +168,15 @@ function displayMarkers(arrLatLong, eventsJSON){
                 <br>${eventsJSON.data[index].name}
                 <br>`)
             .openPopup();
+            const text = document.createTextNode(eventsJSON.data[index].name);
+            const li = document.createElement("li");
+            li.appendChild(text);
+            ul.appendChild(li);
         })
+
+        // for (let event in eventsJSON){
+        //     ul.appendChild(event);
+        // }
 }
 
 
