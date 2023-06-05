@@ -15,24 +15,30 @@ const basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.p
 map.setMaxBounds([[1.56073, 104.1147], [1.16, 103.502]]);
 basemap.addTo(map);
 
-//init function - run once 
-async function init() {
-    //get list of event types
-    listEventTypes = await getListOfEventTypes();
-    // console.log('listEventTypes ', listEventTypes)
 
+//init function to be run once - called by ()
+async function initialiseCategories() {
+    
+    //make API call to return list of event types
+    const response = await fetch(`https://tih-api.stb.gov.sg/content/v1/event/types?language=en&apikey=${dotenvApikey}`, {
+        method: 'GET',
+        redirect: 'follow'
+    })
+    const responseJSON = await response.json();
+
+    //access the data attribute of the returned object
+    listEventTypes = responseJSON.data;
 }
-function searchByKeyword () {
-    // search functionality
 
+// search functionality
+function listenForSearchClick () {
     const searchBtn = document.querySelector('#searchBtn')
-    searchBtn.addEventListener("click", triggerSearch)
+    searchBtn.addEventListener("click", () => {
+        const searchInput = document.querySelector("#keywordSearch").value;
+        getEventsAndDisplay(searchInput);
+    })
 }
-function triggerSearch () {
-    const searchInput = document.querySelector("#keywordSearch").value
-    //console.log('searchInput: ', searchInput)
-    getEventsAndDisplay(searchInput)
-}
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -46,17 +52,10 @@ function getLocation() {
 //         .openOn(map);
 // }
 //fetch list of event types from TIH STB
-async function getListOfEventTypes() {
-    const response = await fetch(`https://tih-api.stb.gov.sg/content/v1/event/types?language=en&apikey=${dotenvApikey}`, {
-        method: 'GET',
-        redirect: 'follow'
-    })
-    const responseJSON = await response.json();
-    return responseJSON.data
-}
-//do Dropdown menu, listen for click
-async function doDropdown() {
-    //put list of Event Types into dropdown menu
+
+//populate dropdown menu with returned API object & listen for click
+async function populateDropdownAndListenForClick() {
+    //put returned list of Event Types into dropdown menu
     const dropdownMenu = document.querySelector(".dropdown-menu")
     //console.log(dropdownMenu)
     listEventTypes.forEach(element => {
@@ -70,19 +69,22 @@ async function doDropdown() {
         anchorOfEventType.addEventListener("click", changeDropdown);
     })
 }
+
 //change text in Dropdown and trigger plotting of events
 function changeDropdown (name) {
     const eventTypeTarget = name.target.innerText
     document.querySelector(".btn").innerText = eventTypeTarget
     getEventsAndDisplay(eventTypeTarget)
 }
-//initialise 
+
+//initialise (equivalent to main())
 (async function () {
-    await init()
-    doDropdown()
-    searchByKeyword()
+    await initialiseCategories();
+    populateDropdownAndListenForClick();
+    listenForSearchClick();
 })()
-//Actual Search API call
+
+//Search API call
 async function getEventsBySearch(searchString){
         //search by keyword
         const requestOptions = {
@@ -95,6 +97,7 @@ async function getEventsBySearch(searchString){
         //console.log('displayEventType:',response)
         return responseJSON 
 }
+
 // return Lat Long from Postal Code
 async function getLatLongFromPostalCode(postalCode) {
     if (postalCode === '') return;
@@ -112,6 +115,7 @@ async function getLatLongFromPostalCode(postalCode) {
     //console.log('getLatLongFromPostalCode: ', response)
     return response.json()
 }
+
 //get events by searching and trigger displayMarkers
 async function getEventsAndDisplay(searchString) {
     //object containing Events
@@ -124,11 +128,11 @@ async function getEventsAndDisplay(searchString) {
     eventsJSON.data.forEach( (element,index) => {
         postalCode[index] = eventsJSON.data[index].address.postalCode;
     })
-    console.log('postalCode: ',postalCode)
+    // console.log('postalCode: ',postalCode)
 
     //get Promise all from postalCode
     let promiseAllFromPostalCode = await Promise.all(postalCode.map(item => getLatLongFromPostalCode(item)))
-    console.log ('promiseAllFromPostalCode: ', promiseAllFromPostalCode)
+    // console.log ('promiseAllFromPostalCode: ', promiseAllFromPostalCode)
     
     //get lattitude longitude from promiseAll JSON
     const arrLatLong = [[]]
@@ -138,7 +142,7 @@ async function getEventsAndDisplay(searchString) {
         const long = parseFloat(promiseAllFromPostalCode[index].results[0].LONGITUDE)
         arrLatLong[index] = [lat,long]
     })
-    console.log(arrLatLong)
+    // console.log(arrLatLong)
 
     //clearMarkers
     clearMarkers()
@@ -152,14 +156,27 @@ function clearMarkers(){
     const toClearPopup = document.querySelector(".leaflet-popup-pane").innerHTML = '';
     const toClearShadow = document.querySelector(".leaflet-shadow-pane").innerHTML = '';
 
+    clearEventsCards();
+}
+
+const clearEventsCards = () => {
+    const eventsUL = document.querySelector(".events-ul");
+    if (eventsUL.hasChildNodes()) {
+        let children = eventsUL.childNodes;
+        for (const node of children){
+            eventsUL.removeChild(node);
+        }
+    }
 }
 //display Markers on Map
 function displayMarkers(arrLatLong, eventsJSON){
 
-
         //display markers
         const ul = document.querySelector('.listicle-ul');
-        const markers = []
+        const markers = [];
+
+        clearEventsCards();
+
         arrLatLong.forEach((element,index) => {
             markers[index] = L.marker(arrLatLong[index]).addTo(map)
             markers[index]
@@ -169,16 +186,7 @@ function displayMarkers(arrLatLong, eventsJSON){
                 <br>`)
             .openPopup();
             
-
-            const eventsUL = document.querySelector(".events-ul");
-            if (eventsUL.hasChildNodes()) {
-                let children = eventsUL.childNodes;
-                for (const node of children){
-                    eventsUL.removeChild(node);
-                }
-            }
-
-
+            //add Events as cards to list by the side
             const text = document.createTextNode(eventsJSON.data[index].name);
             const li = document.createElement("li");
             li.appendChild(text);
@@ -186,10 +194,6 @@ function displayMarkers(arrLatLong, eventsJSON){
             // li.classList.add(`draggable="true"`);
             ul.appendChild(li);
         })
-
-        // for (let event in eventsJSON){
-        //     ul.appendChild(event);
-        // }
 }
 // //use as reference
 // //get latitude longitude
