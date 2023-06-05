@@ -6,7 +6,12 @@ let listEventTypes = [] //list of Event Types
 
 //display map - copied from https://www.onemap.gov.sg/docs/maps/
 const center = L.bounds([1.56073, 104.00475], [1.14, 103.642]).getCenter();
-const map = L.map('mapdiv').setView([center.x, center.y], 12);
+const map = L.map('mapdiv',{zoomControl:false}).setView([center.x, center.y], 12);
+
+L.control.zoom({
+    position: 'bottomleft'
+}).addTo(map);
+
 const basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
     detectRetina: true,
     maxZoom: 18,
@@ -14,6 +19,8 @@ const basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.p
 });
 map.setMaxBounds([[1.56073, 104.1147], [1.16, 103.502]]);
 basemap.addTo(map);
+
+
 
 
 //init function to be run once - called by ()
