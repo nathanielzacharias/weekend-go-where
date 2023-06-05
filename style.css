@@ -114,4 +114,10 @@ title-div {
     flex-direction: column;
 }
 
+.footer {
+    font: italic 100 0.8em 'Besley', serif;
+    margin: 0;
+    padding-left: 2rem;
+}
+
 
