@@ -147,16 +147,16 @@ async function getEventsAndDisplay(searchString) {
 
 
 }
-
 function clearMarkers(){
     const toClearMarkers = document.querySelector(".leaflet-marker-pane").innerHTML = '';
     const toClearPopup = document.querySelector(".leaflet-popup-pane").innerHTML = '';
     const toClearShadow = document.querySelector(".leaflet-shadow-pane").innerHTML = '';
 
 }
-
 //display Markers on Map
 function displayMarkers(arrLatLong, eventsJSON){
+
+
         //display markers
         const ul = document.querySelector('.listicle-ul');
         const markers = []
@@ -168,9 +168,22 @@ function displayMarkers(arrLatLong, eventsJSON){
                 <br>${eventsJSON.data[index].name}
                 <br>`)
             .openPopup();
+            
+
+            const eventsUL = document.querySelector(".events-ul");
+            if (eventsUL.hasChildNodes()) {
+                let children = eventsUL.childNodes;
+                for (const node of children){
+                    eventsUL.removeChild(node);
+                }
+            }
+
+
             const text = document.createTextNode(eventsJSON.data[index].name);
             const li = document.createElement("li");
             li.appendChild(text);
+            li.classList.add("event-item");
+            // li.classList.add(`draggable="true"`);
             ul.appendChild(li);
         })
 
@@ -178,8 +191,6 @@ function displayMarkers(arrLatLong, eventsJSON){
         //     ul.appendChild(event);
         // }
 }
-
-
 // //use as reference
 // //get latitude longitude
 // async function getLatLongFromPostalCode(postalCode) {

@@ -30,67 +30,76 @@
 </head>
 <body>
     <div class="container">
-        
-        <div class="h1-container">
-            <h1>
-                <div>
-                    <img class= "map-logo" src="assets/singapore-map.svg" alt="stylised map">
-                </div>
-                <div class="title-div">
-                    <span>Weekend go where</span>
-                </div>
-            </h1>   
-            <!-- <p>Discover events around Singapore</p> -->
-        </div>    
-        
-        <nav class="navbar navbar-expand-lg navbar-dark" style=" background: linear-gradient(-165deg, #cae3ce 0%,hsl(236, 77%, 75%)100%)">
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item dropdown">
-                    <div class="dropdown-center">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        </ul>
+    
+        <div class="row">
+
+            <div class="h1-container">
+                <h1>
+                    <div>
+                        <img class="map-logo" src="assets/singapore-map.svg" alt="stylised map">
                     </div>
-                  </li>
-
-                    <!-- <li class="nav-item">
-                        <span><<< Browse</span>
-                        <span>||</span>
-                        <span>Search >></span>
-                    </li> -->
-
-                </ul>
-                <form class="d-flex search-form search-widget">
-                    <label for="searchingByKeyword" class="form-label mt-3"></label>
-                    <span>
-                        <input type="search" class="form-control" id="keywordSearch" placeholder='' role="combobox">
-                    </span>
-                    <span>
-                        <button type="submit" class="btn btn-secondary search" id="searchBtn">&#128269;</button>
-                    </span>
-                    <!-- <div class="mb-3 text-center"> -->
-                  </div>
-                </form>  
-
-              </div>
-          </nav>
+                    <div class="title-div">
+                        <span>Weekend go where</span>
+                    </div>
+                </h1>
+                <!-- <p>Discover events around Singapore</p> -->
+            </div>
+    
+            <nav class="navbar navbar-expand-lg navbar-dark"
+                style=" background: linear-gradient(-165deg, #cae3ce 0%,hsl(236, 77%, 75%)100%)">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <div class="dropdown-center">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Categories
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div>
+                            <form class="d-flex search-form search-widget">
+                                <label for="searchingByKeyword" class="form-label mt-3"></label>
+                                <span>
+                                    <input type="search" class="form-control" id="keywordSearch" placeholder=''
+                                        role="combobox">
+                                </span>
+                                <span>
+                                    <button type="submit" class="btn btn-secondary search" id="searchBtn">&#128269;</button>
+                                </span>
+                                <!-- <div class="mb-3 text-center"> -->
+                        </div>
+                        </form>
+                    </div>
+    
+                </div>
+            </nav>
+    
+        </div>
         
         <div class="row">
-            <!-- <div class="col-9"> -->
-                <div class="col-9 container" id='mapdiv'></div>
-            <!-- </div> -->
-            <div class="col-3">
-                <div class="container listicle">
+            <div class="col-sm-auto" id='mapdiv'></div>
+            <div class="col listicle side-events">
+                <div class="row">
                     <h2>Events</h2>
-                    <ul class="listicle-ul"></ul>
+                    <ul class="listicle-ul events-ul">
+                        <li class="event-item list-placeholder">No events selected</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <h2>Favorites</h2>
+                    <ul class="listicle-ul favorites-ul">
+                        <li class="event-item list-placeholder">No favorites added</li>
+                    </ul>
                 </div>
             </div>
         </div>
