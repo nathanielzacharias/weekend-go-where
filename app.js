@@ -12,7 +12,7 @@ L.control.zoom({
     position: 'bottomleft'
 }).addTo(map);
 
-const basemap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
+const basemap = L.tileLayer('https://www.onemap.gov.sg/maps/tiles/Default/{z}/{x}/{y}.png', {
     detectRetina: true,
     maxZoom: 18,
     minZoom: 11
