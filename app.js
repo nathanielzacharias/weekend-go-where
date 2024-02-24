@@ -129,7 +129,8 @@ async function getLatLongFromPostalCode(postalCode) {
         redirect: 'follow'
     };
 
-    const response = await fetch(`https://developers.onemap.sg/commonapi/search?searchVal=${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`, requestOptions)
+    const response = await fetch(`https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${postalCode}&returnGeom=Y&getAddrDetails=Y&pageNum=1`, requestOptions)
+    // https://www.onemap.gov.sg/api/common/elastic/search?searchVal=200640&returnGeom=Y&getAddrDetails=Y&pageNum=1
     //console.log('getLatLongFromPostalCode: ', response)
     return response.json()
 }
