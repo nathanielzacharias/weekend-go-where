@@ -210,7 +210,7 @@ function displayMarkers(arrLatLong, eventsJSON){
             const li = document.createElement("li");
             li.appendChild(text);
             li.classList.add("event-item");
-            li.classList.add(`draggable="true"`);
+            // li.classList.add(`draggable="true"`);
             ul.appendChild(li);
         })
 }
